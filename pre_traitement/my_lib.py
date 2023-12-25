@@ -10,6 +10,7 @@ import csv
 import mediapipe as mp
 from moviepy.editor import VideoFileClip
 from decimal import *
+import tqdm
 
 mp_drawing = mp.solutions.drawing_utils  # Drawing helpers
 mp_holistic = mp.solutions.holistic  # Mediapipe Solutions
@@ -112,7 +113,7 @@ def extract_keypoints(results): #Fonction qui extrait les coordonnées des point
     return (pose + lh + rh)
 
 def main_loop(fichiers, nb_frame, my_csv): #fonction qui fait la boucle principale
-    for videos in fichiers:
+    for videos in tqdm.tqdm(fichiers):
         mot = os.path.split(videos)[1].split('-')[0]
         sec = 0
         results = list([])
@@ -180,7 +181,7 @@ def analyze_normalized_frame(video, sec): #fonction qui analyse une frame d'une 
     return verif, results
 
 def main_loop_normalize(fichiers, nb_frame, my_csv): #fonction qui fait la boucle principale
-    for videos in fichiers:
+    for videos in tqdm.tqdm(fichiers):
         mot = os.path.split(videos)[1].split('-')[0]
         sec = 0
         results = list([])

@@ -11,7 +11,7 @@ print("Nombre de frames : ", nb_frame if nb_frame != -1 else "Moyenne", " | Norm
 
 # ------------------------------------- Chemin vers le csv --------------------------------- #
 
-my_csv = '../data/csv/extracted_data.csv'
+my_csv = '../data/csv/normalized_extracted_data.csv'
 
 # ------------------------------------- Initialisation du dataset -------------------------- #
 

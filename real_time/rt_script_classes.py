@@ -14,7 +14,8 @@ try :
     print("Saving the model and the args...")
     classifier.dump("model.sav", "args.sav") # sauvegarder le modèle et les arguments
 #------------------------------------------ MODEL -------------------------------------------------- #
-except : 
+except Exception as e : 
+    #print(e)
     try : # si on a un modèle en argument
         model = my_classes.my_lib.joblib.load(sys.argv[1]) # charger le modèle
         args = my_classes.my_lib.joblib.load(sys.argv[2]) # charger les arguments
@@ -22,8 +23,9 @@ except :
         classifier = my_classes.Classifier(model, args) # initialiser le classifieur
         print("Classifier accuracy : ", classifier.precision)
 # ----------------------------------------- ERROR --------------------------------------------------- #
-    except : # invalid arguments
+    except Exception as e: # invalid arguments
         print("Please either enter a valid csv file or a valid model with args, verify your paths")
+        #print(e)
         sys.exit()
 # ----------------------------------------- MAIN ----------------------------------------------------- #
 print("Beginning of the main loop")
