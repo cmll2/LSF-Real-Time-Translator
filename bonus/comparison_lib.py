@@ -188,6 +188,12 @@ def compare_models(csv_paths, names = None): #function to plot histogram of accu
         for i in range(len(csv_paths)):
             names.append("Dataset " + str(i+1))
             names.append("Dataset " + str(i+1) + " (standardized)")
+    else:
+        new_names = []
+        for i in range(len(names)):
+            new_names.append(names[i])
+            new_names.append(names[i] + " (standardized)")
+        names = new_names
 
     best_estimators = []
     print("Performing grid search for each dataset...")
